@@ -43,3 +43,18 @@ runtime_error_tests! {
 }
 
 static_error_tests! {}
+
+profile_tests! {
+    {
+        name: profile_linked_list_manipulations,
+        file: "linked_list_manipulations.snek",
+        time_trials: 20,
+        expected: "1\n2\n3\n4\n5\n5\n4\n3\n2\n1\nnil",
+    },
+    {
+        name: profile_simple_sum,
+        file: "simple_sum.snek",
+        input: "10",
+        expected: "55",
+    },
+}

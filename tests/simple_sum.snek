@@ -1,0 +1,15 @@
+(fun (sums n)
+  (let
+    ((i 1) (acc 0))
+    (loop
+      (if (> i n)
+        (break acc)
+        (block
+          (set! acc (+ acc i))
+          (set! i (+ i 1))
+        )
+      )
+    )
+  )
+)
+(sums input)
