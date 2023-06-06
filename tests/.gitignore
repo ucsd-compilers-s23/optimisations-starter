@@ -2,4 +2,4 @@
 *.s
 *.a
 *.o
-tests/callgrind.out
+callgrind.out
