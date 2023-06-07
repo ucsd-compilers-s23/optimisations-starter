@@ -242,7 +242,7 @@ fn profile_static_instr_count(program_str: &str) {
     let cmd = if cfg!(target_os = "linux") {
         format!("objdump -d -M intel \"{program_str}\" | awk -F'\\t' '{{if ($3 != \"\") {{count++}}}} END {{print count}}'")
     } else {
-        format!( "objdump -d -x86-asm-syntax=intel {program_str} | grep '^\\ ' | expand | cut -c41- | sed 's/ .*//' | wc -l")
+        format!( "objdump -d --x86-asm-syntax=intel {program_str} | grep '^\\ ' | expand | cut -c41- | sed 's/ .*//' | wc -l")
     };
 
     let out = Command::new("sh").args(["-c", &cmd]).output().unwrap();
@@ -256,7 +256,7 @@ fn profile_static_instr_count(program_str: &str) {
     let cmd = if cfg!(target_os = "linux") {
         format!("objdump -d -M intel \"{program_str}\" | awk -F'\\t' '{{if ($3 != \"\") {{split($3, instr, /[[:space:]]/); print instr[1]}}}}' | sort | uniq -c | sort -nr")
     } else {
-        format!( "objdump -d -x86-asm-syntax=intel {program_str} | grep '^\\ ' | expand | cut -c41- | sed 's/ .*//' | sed '/^$/d' | sort | uniq -c | sort -nr")
+        format!( "objdump -d --x86-asm-syntax=intel {program_str} | grep '^\\ ' | expand | cut -c41- | sed 's/ .*//' | sed '/^$/d' | sort | uniq -c | sort -nr")
     };
 
     let out_counts = Command::new("sh").args(["-c", &cmd]).output().unwrap();
