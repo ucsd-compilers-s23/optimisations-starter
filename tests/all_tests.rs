@@ -57,4 +57,10 @@ profile_tests! {
         input: "10",
         expected: "55",
     },
+    {
+        name: profile_bigloop,
+        file: "bigloop.snek",
+        input: "100000000",
+        expected: "100",
+    },
 }
